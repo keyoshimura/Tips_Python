@@ -39,7 +39,7 @@ from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 
 # •W€‰»‚ğÀ{(fit‚Íˆê“x‚¾‚¯‚ÅOK‚Å‚·)
-X_train_std = sc.fit(transform(X_train))
+X_train_std = sc.fit_transform(X_train)
 X_test_std = sc.transform(X_test)
 
 
