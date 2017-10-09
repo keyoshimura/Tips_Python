@@ -29,3 +29,36 @@ data_second = np.array(data.get_chunk())[:,:] # chunksizeの2発目が格納される
 data_third = np.array(data.get_chunk())[:,:] # chunksizeの3発目が格納される
 
 
+●標準化、正規化
+X_train、X_test変数に対象としたいデータを入れてください。
+
+
+from sklearn.preprcossing import StandardScaler
+
+# インスタンス生成
+sc = StandardScaler()
+
+# 標準化を実施(fitは一度だけでOKです)
+X_train_std = sc.fit(transform(X_train))
+X_test_std = sc.transform(X_test)
+
+
+●データをトレーニング用とテスト用に分割
+
+
+import pandas as pd
+from sklearn.cross_validation import train_test_split
+
+# データの読み込み
+df_wine = pd.read_csv('https://archive.ics.uci.edu/ml/'
+                      'machine-learning-databases/wine/wine.data',
+                      header=None)
+
+# 2列目以降のデータ(説明変数)をXに、1列目のデータ(class label)をYに格納
+# 教師付きデータなのですが、正解ラベルと説明変数を分けるためだけの処理です
+X, Y = df_wine.iloc[:, 1:].values, df_wine.iloc[:, 0].values
+
+# トレーニングデータとテストデータに分割
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state=0)
+
+
