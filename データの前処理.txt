@@ -33,7 +33,7 @@ data_third = np.array(data.get_chunk())[:,:] # chunksizeの3発目が格納される
 X_train、X_test変数に対象としたいデータを入れてください。
 
 
-from sklearn.preprcossing import StandardScaler
+from sklearn.preprocessing import StandardScaler
 
 # インスタンス生成
 sc = StandardScaler()
