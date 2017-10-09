@@ -1,0 +1,31 @@
+データの前処理のTips(Python)
+
+●csv,tsvデータを読み込む
+下記のURLを参考にしました。
+https://techblog.yahoo.co.jp/datascience/use_scikit-learn/
+
+
+import numpy as np
+import pandas as p
+
+"""
+こんなデータを読み込みます。
+なお、このpythonファイルはDesktop上にあり、「test.csv」もデスクトップ上にあるとします。
+
+1,2,3,4,5
+6,7,8,9,10
+11,12,13,14,15
+
+"""
+
+# まとめて読み込みたいとき
+data = np.array(p.read_csv(filepath_or_buffer='test.csv', header=None, sep=','))[:,:] #ここでのfilepath_or_bufferは実行しているpythonファイルディレクトリからの相対で見ている
+
+#少しずつ読み込みたい時
+data = p.read_csv(filepath_or_buffer='test.csv', sep=',',header=None, iterator=True, chunksize=1)
+
+data_first = np.array(data.get_chunk())[:,:] # chunksizeの1発目が格納される
+data_second = np.array(data.get_chunk())[:,:] # chunksizeの2発目が格納される
+data_third = np.array(data.get_chunk())[:,:] # chunksizeの3発目が格納される
+
+
