@@ -28,3 +28,34 @@ cov_mat = np.cov(X_train_std.T) # 13*13の共分散行列を作成
 ●固有値と固有ベクトル
 # eigen_vals=固有値、eigen_vecs=固有ベクトル
 eigen_vals, eigen_vecs = np.linalg.eig(cov_mat)
+
+●分散説明率
+主成分分析等で説明変数を減らす際は、「固有ベクトルと固有値」を求めたのち、「各固有ベクトルが説明できる分散の割合」から必要な固有ベクトルを取捨選択していく
+その際に「固有値」を基に「分散説明率」という概念が必要となる。
+「分散説明率」は「固有値の合計に対する固有値の割合」である。
+なので、共分散行列から固有値、固有ベクトルを求めたのち、分散説明率を求めることで必要な主成分に絞り込むことができる
+
+# 固有値を合計
+tot = sum(eigen_vals) # eigen_valsは1行13列の固有値の配列
+
+# 分散説明率を計算
+var_exp = [(i / tot) for i in sorted(eigen_vals, reverse=True)]
+
+# 分散説明率の累積和を取得
+cum_var_exp = np.cumsum(var_exp)
+
+# 分散説明率の棒グラフを作成
+import matplotlib.pyplot as plt
+plt.bar(range(1, 14), var_exp, alpha=0.5, align='center', label='individual explained variance')
+
+# 分散説明率の累積和の階段グラフを作成
+plt.step(range(1, 14), cum_var_exp, where='mid', label='cumulative explained variance')
+
+# グラフを見やすくする
+plt.ylabel('Explained variance ratio')
+plt.xlabel('Principal components')
+plt.legend(loc='best')
+plt.show()
+
+
+
