@@ -1,0 +1,23 @@
+
+
+# データの読み込み
+import pandas as pd
+df_wine = pd.read_csv('https://archive.ics.uci.edu/ml/'
+                      'machine-learning-databases/wine/wine.data',
+                      header=None)
+
+# 2列目以降のデータ(説明変数)をXに、1列目のデータ(class label)をYに格納
+X, Y = df_wine.iloc[:, 1:].values, df_wine.iloc[:, 0].values
+
+# トレーニングデータとテストデータに分割
+from sklearn.cross_validation import train_test_split
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state=0)
+
+# 平均と標準偏差を用いて標準化
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train_std = sc.fit_transform(X_train)
+
+# 共分散行列を作成
+import numpy as np
+cov_mat = np.cov(X_train_std.T) # 13*13の共分散行列を作成
