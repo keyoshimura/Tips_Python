@@ -18,3 +18,22 @@ print(locale.getpreferredencoding(False))
 参考にしたURLは下記
 http://www.tekito-gottani.com/entry/2016/10/03/183527
 
+
+●実行しているファイルのディレクトリを取得
+下記のURLを参照しました。
+https://qiita.com/nagamee/items/b7d1b02074293fdfdfff
+
+「os」ライブラリを使います。
+import os
+
+・ファイル名
+os.__file__
+
+・相対パス
+os.path.dirname(__file__)
+
+・絶対パス(ファイル名含む)
+os.path.abspath(__file__)
+
+・絶対パス(ファイル名含まない)
+os.path.dirname(os.path.abspath(__file__))
