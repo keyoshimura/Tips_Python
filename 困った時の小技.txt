@@ -59,3 +59,55 @@ os.path.abspath(__file__)
 
 ・絶対パス(ファイル名含まない)
 os.path.dirname(os.path.abspath(__file__))
+
+
+●仮想環境の構築
+異なるバージョンのPythonを使うとか、開発時とかに作ることになるかと。
+(tensorflowを使おうとしたら、python3.5までしか対応していなかったので作りました)
+基本的に「condaプロンプト」で実行します。
+
+・作成した環境のリスト
+conda info --envs
+
+・指定したpythonのバージョンで環境を構築
+conda create --name myenv python=3.3
+# 追加のパッケージを入れたい場合は下記のようにパッケージ名を追記する
+# conda create --name myenv numpy scipy
+# conda create --name myenv anaconda
+
+
+・既存環境のクローンを作成する(myenv,が新しく作成する環境の名前)
+conda create --name clonedenv --clone myenv
+
+・環境を切り替える(myenv,が切り替え先の環境名)
+windows   : activate myenv
+Linux,OS X: source activate myenv 
+
+・環境から出る
+windows   : deactivate 
+Linux,OS X: source deactivate
+
+・環境を消す
+conda remove --name myenv --all
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+参考URL
+http://minus9d.hatenablog.com/entry/2016/01/29/235916
+
+
+
+
