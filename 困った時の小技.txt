@@ -93,3 +93,46 @@ conda remove --name myenv --all
 
 参考URL
 http://minus9d.hatenablog.com/entry/2016/01/29/235916
+
+
+もしくは「Anaconda Navigator」を使ってもいいかもしれない
+
+
+●condaコマンド
+# conda自体のアップデート
+$ conda update conda
+
+# 仮想環境の作成
+$ conda create --name <仮想環境名>  python=<バージョン>
+
+# 仮想環境の削除
+$ conda remove -n <仮想環境名> --all
+
+# 仮想環境の確認
+$ conda info -e
+
+# インストールされているパッケージの一覧を表示
+$ conda list
+
+# パッケージの検索
+$ conda search <パッケージ名>
+
+# 特定のチャンネル内に存在するパッケージの検索
+$ conda search -c <チャンネル名> <パッケージ名>
+
+# 全てのチャンネル内でパッケージの検索
+$ anaconda search -t conda <パッケージ名>
+
+# パッケージのインストール
+$ conda install <パッケージ名>
+
+# 特定のチャンネル内に存在するパッケージのインストール
+$ conda install -c <チャンネル名> <パッケージ名>
+
+# パッケージのインストール(バージョン指定)
+$ conda install <パッケージ名>=<バージョン>
+
+# パッケージのアンインストール
+$ conda uninstall <パッケージ名>
+
+
