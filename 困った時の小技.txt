@@ -136,3 +136,26 @@ $ conda install <パッケージ名>=<バージョン>
 $ conda uninstall <パッケージ名>
 
 
+●jupyterで利用する環境を変更する(カーネルの移動)
+condaプロンプトで操作する。
+環境を作成したのち、下記のコマンドを実行すること。
+
+# 利用可能なカーネルの表示
+$ jupyter kernelspec list
+
+# 仮想環境をアクティベート
+$ activate test
+
+# カーネルを追加
+$ ipython kernel install --user --name=test --display-name=test
+
+これで、jupyter上でカーネルを選択できるようになる。
+ちなみに、--userオプションを付けていた場合、~\AppData\Roaming\jupyter\kernelsの中に追加したカーネルが置かれています。
+なので、追加したカーネルを削除する際は、この名前のフォルダを削除してください。
+
+
+参考URL
+https://qiita.com/tomochiii/items/8b937f15c79a0c3eae0e
+
+
+
