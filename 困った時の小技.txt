@@ -1,16 +1,25 @@
 困った時の小技
 
 ●データの読み込み
-pandasでやりましょう。
+・csvやtxt等ならpandasかな
 
-import pandas as np
+import pandas as pd
 import os
 
-os.chdir(r'\Users\圭太\Desktop\work\python\20170929_Python機械学習プログラミング 達人データサイエンティストによる理論と実践\ch08')
-df = pd.read_csv(r'./movie_data.csv', encoding="cp932")
+os.chdir(r'\Users\圭太\Desktop\work\python\20170929_Python機械学習プログラミング 達人データサイエンティストによる理論と実践\ch08') # ファイルが置いてあるディレクトリに移動
+df = pd.read_csv(r'./movie_data.csv', encoding="cp932") # ファイル読み込み(cp932はshift-jisの日本における文字コードを意味する)
 
-●pythonで作成したデータをファイルに出力
-to_csv関数を使いましょう。
+
+・ndarray形式(numpyの配列)のデータならnumpyを使うかな(npyという拡張子になる)
+import numpy as np
+import os
+
+os.chdir(r'\Users\圭太\Desktop') # ファイルが置いてあるディレクトリに移動
+df = np.load(r'hoge.npy') # ファイル読み込み(hogeがファイル名)
+
+
+●データを出力
+・csvにするならto_csv関数を使いましょう。
 
 >> s
 a    1
@@ -21,6 +30,31 @@ dtype: int64
 
 参考URL
 https://openbook4.me/projects/183/sections/1101
+
+
+・配列を出力するなら(モデル作成時等)
+import numpy as np
+
+x_data1 = np.random.rand(10,3).astype(np.float32)
+np.save('test_x.npy', x_data1)
+
+
+# numpy.save関数のapiについて説明===========================
+numpy.save(file, arr, allow_pickle=True, fix_imports=True)
+
+.npy形式で配列を保存します。
+
+params:
+
+パラメータ名	             型	                           概要
+file	                ファイルまたはstr          データを保存する先を指定します。 
+                      またはファイルのパス	   拡張子は.npyです。
+allow_pickle	            bool値	           (省略可能)初期値True
+                                                   Pythonのモジュールであるpickleを使用して配列情報を保存するかどうかを指定します。pickleを使用するといろんなコードが実行できてしまうので、セキュリティの観点からここをFalseにすることがあります。
+fix_imports	            bool値	          (省略可能)初期値True
+                                                   Python2でも扱えるような形式にするかどうかを指定します。
+arr	                   array_like
+                  配列に相当するオブジェクト	   保存する配列。
 
 ●pandasでread_csvができない
 ①encodeに問題があるかも...
