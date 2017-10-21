@@ -180,7 +180,10 @@ $ jupyter kernelspec list
 # 仮想環境をアクティベート
 $ activate test
 
-# カーネルを追加
+# 各環境ごとに利用するpythonを区別するためのimport?(よくわかっていない)
+conda install notebook ipykernel
+
+# カーネルをjupyterに追加
 $ ipython kernel install --user --name=test --display-name=test
 
 これで、jupyter上でカーネルを選択できるようになる。
@@ -190,6 +193,3 @@ $ ipython kernel install --user --name=test --display-name=test
 
 参考URL
 https://qiita.com/tomochiii/items/8b937f15c79a0c3eae0e
-
-
-
