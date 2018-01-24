@@ -1,0 +1,34 @@
+Pandas
+
+データの加工にすごく便利。
+
+●Redshiftへの接続
+# -*- coding: utf-8 -*-
+import psycopg2
+import psycopg2.extensions
+ 
+# Redshiftへ接続して、EチケットIDのリストを取得
+conn = psycopg2.connect("dbname=xxxxxxx host=xxxxxxxxxxxx user=xxxxxxx password=xxxxxxx port=5439")
+cur = conn.cursor()
+list_etickets = []
+list_etickets = list(cur.execute("SELECT DISTINCT ticket_kind_id FROM policy_ldb.marketing_calc_value_eticket_body;"))
+
+
+# 単純にSQLを実行するだけならこれでOK
+conn.execute(sql)
+
+●簡単な加工
+# データの読み込み
+col_names = ['col1','col2','col3']
+tsv_data  = pd.read_csv('~/Desktop/work_20180124.tsv', sep='\t', names=col_names)
+df = pd.DataFrame(tsv_data)
+    
+# ヘッダーの作成
+cnt_user = len(df.col2.unique()) # （COUNT DISTINCT）
+yyyymmdd = datetime.now().strftime("%Y%m%d") # （yyyymmdd）
+tst = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # （yyyy-mm-dd hh:mm:ss）
+df_header = pd.DataFrame({'0':[eticket, hogehoge, cnt_user, yyyymmdd, tst]}).T # 複数の項目を１行にまとめる
+df_header.columns = ['col1','col2','col3', 'col4', 'col5'] # カラム名を指定（異なるカラム名のデータをconcatする際に有用）
+    
+# 上記項目をファイルに反映させる（各ファイルの1行目として縦結合する）
+output = pd.concat([df_header, df], ignore_index = True, axis=0) 

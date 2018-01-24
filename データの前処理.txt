@@ -44,8 +44,6 @@ X_test_std = sc.transform(X_test)
 
 
 ●データをトレーニング用とテスト用に分割
-
-
 import pandas as pd
 from sklearn.cross_validation import train_test_split
 
