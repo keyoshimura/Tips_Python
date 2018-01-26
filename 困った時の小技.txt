@@ -193,3 +193,19 @@ $ ipython kernel install --user --name=test --display-name=test
 
 QlURL
 https://qiita.com/tomochiii/items/8b937f15c79a0c3eae0e
+
+
+œ‰üs‚·‚é
+’·‚¢•¶š—ñ‚ğ•Ï”‚É“ü‚ê‚éÛ‚ÉA‰üs‚µ‚½‚¢‚Á‚Ä‚ ‚è‚Ü‚¹‚ñ‚©H„‚Í‚ ‚è‚Ü‚·B
+uPython‚¾‚Æ‰üs‚ğ‹CŒy‚É‚Å‚«‚È‚¢...v‚Æ‚¨¢‚è‚Ì‚ ‚È‚½I‚±‚±‚Å‚ÍŠÈ’P‚É‰üs‚·‚é•û–@‚É‚Â‚¢‚Ä‚¨‹³‚¦‚µ‚Ü‚·B
+
+ƒYƒoƒŠA‚±‚¤‚Å‚·B
+
+print ('foo + €
+       bar')
+
+
+‹tƒXƒ‰ƒbƒVƒ…‚ğ‘«‚µ‚Ä‚ ‚°‚ê‚ÎOKA‚Æ‚¢‚¤‚±‚Æ‚Å‚·B
+ŠÈ’P‚Å‚·‚ËB
+
+

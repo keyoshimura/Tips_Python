@@ -1,0 +1,23 @@
+●実行時間を計測する
+def timefn(fn):
+    from functools import wraps
+    import time
+    """
+    時間測定を行うデコレータ
+    """
+    @wraps(fn)
+    def measure_time(*args, **kwargs):
+        start_time = time.time()
+        result = fn(*args, **kwargs)
+        end_time = time.time()
+        print('@timefn', fn.__name__, end_time - start_time, '[sec]')
+        return result
+    return measure_time
+
+# 使い方の例
+@timefn
+def foo():
+    te = 0
+    for i in range(1, 10000):
+        te += i
+    return te
