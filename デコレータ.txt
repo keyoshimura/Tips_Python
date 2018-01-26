@@ -1,9 +1,10 @@
-œÀsŠÔ‚ğŒv‘ª‚·‚é
-def timefn(fn):
+â—å®Ÿè¡Œæ™‚é–“ã®è¨ˆæ¸¬
+#codingï¼šutf-8
+def timefnï¼ˆfnï¼‰ï¼š
     from functools import wraps
     import time
     """
-    ŠÔ‘ª’è‚ğs‚¤ƒfƒRƒŒ[ƒ^
+    æ™‚é–“æ¸¬å®šã‚’è¡Œã†ãƒ‡ã‚³ãƒ¬ãƒ¼ã‚¿
     """
     @wraps(fn)
     def measure_time(*args, **kwargs):
@@ -14,7 +15,7 @@ def timefn(fn):
         return result
     return measure_time
 
-# g‚¢•û‚Ì—á
+# ä½¿ã„æ–¹ã®ä¾‹
 @timefn
 def foo():
     te = 0
