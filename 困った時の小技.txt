@@ -209,3 +209,19 @@ print ('foo + €
 ŠÈ’P‚Å‚·‚ËB
 
 
+œŠÂ‹«•Ï”
+# ŠÂ‹«•Ï”‚Ì‚ ‚ê‚±‚ê
+ 
+import os
+
+# •\¦
+for k, v in os.environ.items():
+    print("{key} : {value}".format(key=k, value=v))
+    
+# ŠÂ‹«•Ï”‚ğ’Ç‰Á
+os.environ["HOGE"] = "ABCDEFG"
+ 
+# Ä“x•\¦
+for k, v in os.environ.items():
+    print("{key} : {value}".format(key=k, value=v))
+
